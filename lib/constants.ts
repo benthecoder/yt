@@ -1,0 +1,98 @@
+import {
+  LucideIcon,
+  Sigma,
+  School,
+  PanelsTopLeft,
+  Cpu,
+  Cross,
+  Book,
+  Brain,
+  Target,
+  Rocket,
+  PiggyBank,
+  Landmark,
+  BriefcaseBusiness,
+  BookX,
+  Pickaxe,
+  Languages,
+  BookOpenText,
+  MessageCircleMore,
+  Palette,
+  Music,
+  Code,
+  Leaf,
+  Vote,
+  Scale,
+  Biohazard,
+  Medal,
+  GraduationCap,
+  PersonStanding,
+  Pill,
+  Home,
+  Compass,
+  Library,
+  Search,
+} from 'lucide-react';
+
+export const SHOW_BACKGROUND_SEGMENTS = new Set(['login', 'register', 'auth']);
+
+interface IconMapType {
+  [key: string]: LucideIcon;
+}
+
+export const Links = [
+  {
+    title: 'Home',
+    icon: Home,
+    path: '/dashboard',
+  },
+  {
+    title: 'Explore',
+    icon: Compass,
+    path: '/explore',
+  },
+  {
+    title: 'Collection',
+    icon: Library,
+    path: '/collection',
+  },
+  {
+    title: 'Search',
+    icon: Search,
+    path: '/search',
+  },
+];
+
+export const IconMap: IconMapType = {
+  Tutorials: School,
+  Technology: Cpu,
+  Healthcare: Cross,
+  Business: BriefcaseBusiness,
+  History: BookX,
+  Mathematics: Sigma,
+  Engineering: Pickaxe,
+  Languages: Languages,
+  Literature: BookOpenText,
+  Art: Palette,
+  Music: Music,
+  Programming: Code,
+  Environment: Leaf,
+  Politics: Vote,
+  Psychology: Brain,
+  Law: Scale,
+  Biology: Biohazard,
+  Astronomy: Rocket,
+  Economics: Landmark,
+  Sports: Medal,
+  Culture: Landmark,
+  Philosophy: Landmark,
+  Education: GraduationCap,
+  Leadership: PersonStanding,
+  Medicine: Pill,
+  Design: PanelsTopLeft,
+  Reading: Book,
+  Productivity: Target,
+  Entrepreneurship: Rocket,
+  Communication: MessageCircleMore,
+  Finance: PiggyBank,
+};
