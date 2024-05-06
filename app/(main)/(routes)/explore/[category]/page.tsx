@@ -3,9 +3,9 @@
 import VideoCarousel from '@/components/videoCarousel';
 import useSWR from 'swr';
 
-export const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 const VideoByCategory = ({ params }: any) => {
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
   const { category } = params;
   const { data: videos, isLoading } = useSWR(
     `https://weichunnn-production--yt-university-app.modal.run/api/videos?page=1&page_size=10&category=${category}`,

@@ -5,9 +5,9 @@ import { IconMap } from '@/lib/constants';
 import VideoCarousel from '@/components/videoCarousel';
 import useSWR from 'swr';
 
-export const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 const Explore = () => {
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
   const categories = Object.keys(IconMap);
 
   const { data: videos, isLoading } = useSWR(

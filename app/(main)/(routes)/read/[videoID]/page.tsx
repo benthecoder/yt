@@ -14,7 +14,7 @@ interface MarkdownProps {
   content: string;
 }
 
-export const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Markdown = ({ content }: MarkdownProps) => {
   return (

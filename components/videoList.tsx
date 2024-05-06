@@ -7,7 +7,7 @@ type VideoProps = {
     title: string;
     channel: string;
     thumbnail: string;
-    updated_at: string;
+    uploaded_at: string;
   };
 };
 

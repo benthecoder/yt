@@ -4,10 +4,16 @@ import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
+interface SearchResult {
+  id: string;
+  url: string;
+  title: string;
+}
+
 const SearchPage = () => {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<SearchResult[] | string | null>(null);
 
   const handleSearch = async () => {
     setLoading(true);

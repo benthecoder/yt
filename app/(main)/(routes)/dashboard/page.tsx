@@ -4,17 +4,17 @@ import useSWR from 'swr';
 import VideoList from '@/components/videoList';
 import { useUser } from '@clerk/nextjs';
 
-export const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 type Video = {
   id: string;
   title: string;
   channel: string;
   thumbnail: string;
-  updated_at: string;
+  uploaded_at: string;
 };
 
 const Home = () => {
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
   const { isSignedIn, user } = useUser();
 
   const { data: videos, isLoading } = useSWR(
