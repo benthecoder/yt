@@ -10,6 +10,7 @@ type Video = {
   channel: string;
   thumbnail: string;
   uploaded_at: string;
+  category: string;
 };
 
 const Home = () => {
