@@ -23,7 +23,8 @@ const CategoriesNav: React.FC<PropType> = ({ categories }) => {
             <Link
               key={category}
               href={`/explore/${category}`}
-              className="flex text-md text-black border border-black gap-2 p-2 items-center justify-center rounded-md shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] hover:bg-gray-200 hover:text-gray-800 transition-colors"
+              className="flex text-md text-black border border-black gap-2 p-2 items-center justify-center rounded-md shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] hover:bg-black hover:text-white
+              transition-colors"
             >
               {Icon && <Icon size={18} />}
               <span>{category}</span>

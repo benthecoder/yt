@@ -48,6 +48,7 @@ interface ActivePath {
 
 export function Sidebar({ isCollapsed }: SidebarNavProps) {
   const activePath: ActivePath = useNavigation();
+  const { isSignedIn } = useUser();
 
   return (
     <nav className="flex flex-col gap-2 p-2 mt-10">
@@ -70,10 +71,11 @@ export function Sidebar({ isCollapsed }: SidebarNavProps) {
             </TooltipContent>
           </Tooltip>
         ) : (
+          // not collapsed
           <Link key={index} href={link.path}>
             <div
               className={cn(
-                `flex items-center p-2 hover:bg-gray-200 hover:rounded-md`,
+                `flex items-center p-2 hover:bg-black hover:text-white hover:rounded-md`,
                 {
                   'font-bold': activePath[link.title],
                 }
@@ -102,11 +104,15 @@ export function User({ isCollapsed }: UserProps) {
 
   return (
     <div className="flex items-center justify-between m-4">
-      {isSignedIn && (
+      {isSignedIn ? (
         <div className="flex items-center space-x-2">
           <UserButton afterSignOutUrl="/" />
           {!isCollapsed && <span>{user.fullName}</span>}
         </div>
+      ) : (
+        <Link href="/sign-in">
+          <Button>Log in</Button>
+        </Link>
       )}
     </div>
   );
@@ -122,7 +128,7 @@ const urlSchema = z.object({
 });
 
 export function SubmitYouTubeURL({ onClose }: { onClose: () => void }) {
-  const { isSignedIn, user } = useUser();
+  const { user } = useUser();
 
   const form = useForm<z.infer<typeof urlSchema>>({
     resolver: zodResolver(urlSchema),
@@ -207,6 +213,7 @@ export function Nav({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const pageTitle = getPageTitleByPath(pathname);
   const { isMobile, isDesktop } = useMediaQuery();
+  const { isSignedIn } = useUser();
 
   React.useEffect(() => {
     if (isMobile) {
@@ -235,7 +242,7 @@ export function Nav({ children }: { children: React.ReactNode }) {
             </Button>
             {isDesktop && <Logo />}
 
-            <div className="flex-grow text-center content-center text-2xl">
+            <div className="flex-grow text-center content-center text-2xl font-sans font-bold">
               {pageTitle}
             </div>
 
@@ -250,10 +257,21 @@ export function Nav({ children }: { children: React.ReactNode }) {
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
-          <DialogContent>
-            <DialogTitle>Add YouTube URL</DialogTitle>
-            <SubmitYouTubeURL onClose={() => setDialogOpen(false)} />
-          </DialogContent>
+          {!isSignedIn ? (
+            <DialogContent className="items-center justify-center">
+              <DialogTitle className="my-10">
+                Please sign up to submit a video
+              </DialogTitle>
+              <Link href="/sign-up" className="text-center">
+                <Button className="p-4">Log in</Button>
+              </Link>
+            </DialogContent>
+          ) : (
+            <DialogContent>
+              <DialogTitle>Add YouTube URL</DialogTitle>
+              <SubmitYouTubeURL onClose={() => setDialogOpen(false)} />
+            </DialogContent>
+          )}
         </Dialog>
 
         <div className={`flex h-[calc(100vh-5rem)]`}>
