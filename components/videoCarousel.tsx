@@ -130,7 +130,7 @@ const VideoCarousel: React.FC<PropType> = ({
   const options: EmblaOptionsType = { loop: false };
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    AutoScroll({ playOnInit: true }),
+    //AutoScroll({ playOnInit: true }),
     WheelGesturesPlugin(),
   ]);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -173,7 +173,7 @@ const VideoCarousel: React.FC<PropType> = ({
 
   if (!isLoading && (!Array.isArray(videos) || videos.length === 0)) {
     return (
-      <section className="embla w-full max-w-sm md:max-w-2xl lg:max-w-5xl">
+      <section className="embla w-full">
         <div className="flex flex-row justify-between items-center mb-4">
           <h1 className="text-2xl flex-1">{heading}</h1>
         </div>
@@ -184,7 +184,7 @@ const VideoCarousel: React.FC<PropType> = ({
     );
   }
   return (
-    <section className="embla w-full max-w-md md:max-w-2xl lg:max-w-5xl">
+    <section className="embla w-full">
       <div className="flex flex-row justify-between items-center mb-6">
         <div className="flex flex-col mb-6">
           <h1 className="text-2xl flex-1">{heading}</h1>
@@ -211,7 +211,7 @@ const VideoCarousel: React.FC<PropType> = ({
               {[...Array(5)].map((_, index) => (
                 <div className="embla__slide animate-pulse" key={index}>
                   <div className="block group overflow-hidden rounded-lg p-3">
-                    <div className="relative w-full h-32 md:h-32 bg-gray-300 rounded-md"></div>
+                    <div className="relative w-full h-32  bg-gray-300 rounded-md"></div>
                     <div className="p-1 h-20">
                       <div className="h-4 bg-gray-300 rounded mt-4 mb-1"></div>
                       <div className="h-4 bg-gray-300 rounded w-5/6"></div>

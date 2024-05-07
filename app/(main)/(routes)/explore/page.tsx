@@ -17,7 +17,7 @@ const Explore = () => {
   );
 
   return (
-    <div className="flex flex-col h-screen gap-y-10 max-w-6xl">
+    <div className="flex flex-col h-screen gap-y-10 max-w-10xl">
       <CategoriesNav categories={categories} />
       <VideoCarousel
         heading="Recently Added"

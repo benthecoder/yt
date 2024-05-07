@@ -3,17 +3,31 @@
   --slide-size: 80%; /* default to full width for small screens */
 }
 
-@media (min-width: 768px) {
-  /* for medium screens and up */
+@media (min-width: 480px) {
+  /* Adjust for slightly larger screens */
   .embla {
-    --slide-size: 40%; /* show 2 videos on medium screens */
+    --slide-size: 50%; /* show 2 slides on these screens */
   }
 }
 
-@media (min-width: 1000px) {
-  /* for medium screens and up */
+@media (min-width: 768px) {
+  /* Medium screens */
   .embla {
-    --slide-size: 30%; /* show 2 videos on medium screens */
+    --slide-size: 33.33%; /* Show 3 slides on medium screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Large screens */
+  .embla {
+    --slide-size: 25%; /* Show 4 slides on large screens */
+  }
+}
+
+@media (min-width: 1400px) {
+  /* Extra large screens */
+  .embla {
+    --slide-size: 20%; /* Show 5 slides on extra large screens */
   }
 }
 
