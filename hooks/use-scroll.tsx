@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export default function useScroll(threshold: number) {
+export function useScroll(threshold: number) {
   const [scrolled, setScrolled] = useState(false);
 
   const onScroll = useCallback(() => {
@@ -18,4 +18,26 @@ export default function useScroll(threshold: number) {
   }, [onScroll]);
 
   return scrolled;
+}
+
+export function useScrollRef(ref) {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        setIsScrolled(rect.top < window.innerHeight && rect.bottom >= 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [ref]);
+
+  return isScrolled;
 }

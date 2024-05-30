@@ -112,6 +112,7 @@ type Video = {
   title: string;
   channel: string;
   thumbnail: string;
+  favorited: boolean;
 };
 
 interface PropType {
@@ -228,6 +229,7 @@ const VideoCarousel: React.FC<PropType> = ({
                   title={video.title}
                   channel={video.channel}
                   thumbnail={video.thumbnail}
+                  favorited={video.favorited}
                 />
               </div>
             ))

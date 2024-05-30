@@ -37,6 +37,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { usePathname } from 'next/navigation';
 import useMediaQuery from '@/hooks/use-media-query';
 import { Links } from '@/lib/constants';
+import { toast } from '@/components/ui/use-toast';
 
 interface SidebarNavProps {
   isCollapsed: boolean;
@@ -57,9 +58,9 @@ export function Sidebar({ isCollapsed }: SidebarNavProps) {
           <Tooltip key={index} delayDuration={0}>
             <TooltipTrigger asChild>
               <Link href={link.path}>
-                <div className=" flex items-center justify-center hover:bg-gray-200 hover:rounded-md">
+                <div className="flex items-center justify-center hover:bg-gray-200 hover:rounded-md">
                   <link.icon
-                    className={cn(`h-10 w-20  p-2 rounded-md`, {
+                    className={cn(`h-10 w-20 p-2 rounded-md`, {
                       'bg-black text-white': activePath[link.title],
                     })}
                   />
@@ -169,6 +170,9 @@ export function SubmitYouTubeURL({ onClose }: { onClose: () => void }) {
 
       if (videoId) {
         reset();
+        toast({
+          title: 'Video received! Navigating to page...',
+        });
         window.location.href = `/read/${videoId}?call_id=${call_id.call_id}`;
       } else {
         console.error('No video ID found in the URL');
@@ -248,7 +252,7 @@ export function Nav({ children }: { children: React.ReactNode }) {
 
             <Button
               onClick={() => setDialogOpen(true)}
-              className="mr-4 items-center gap-2 py-6"
+              className="mr-4 items-center gap-2 py-3"
             >
               Add video
               <Plus />
@@ -258,7 +262,7 @@ export function Nav({ children }: { children: React.ReactNode }) {
 
         <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
           {!isSignedIn ? (
-            <DialogContent className="items-center justify-center">
+            <DialogContent className="items-center justify-center rounded-md">
               <DialogTitle className="my-10">
                 Please sign up to submit a video
               </DialogTitle>
@@ -267,8 +271,10 @@ export function Nav({ children }: { children: React.ReactNode }) {
               </Link>
             </DialogContent>
           ) : (
-            <DialogContent>
-              <DialogTitle>Add YouTube URL</DialogTitle>
+            <DialogContent className="rounded-md">
+              <DialogTitle className="text-center mb-2">
+                Add YouTube URL
+              </DialogTitle>
               <SubmitYouTubeURL onClose={() => setDialogOpen(false)} />
             </DialogContent>
           )}

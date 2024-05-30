@@ -32,7 +32,7 @@ const Headings = ({ headings, activeId }) => (
             {heading.items.map((child) => (
               <li
                 key={child.id}
-                className={`pl-4 ${
+                className={`pl-4 py-1 ${
                   child.id === activeId ? 'text-black' : 'text-gray-400'
                 }`}
               >
@@ -46,7 +46,7 @@ const Headings = ({ headings, activeId }) => (
                   }}
                   className="hover:text-black transition-colors duration-300"
                 >
-                  {child.title}
+                  • {child.title}
                 </a>
               </li>
             ))}
@@ -63,13 +63,12 @@ const getNestedHeadings = (headingElements: HTMLElement[]) => {
   headingElements.forEach((heading, index) => {
     const { innerText: title, id } = heading;
 
-    console.log(heading);
-
-    console.log(heading.nodeName);
-
     if (heading.nodeName === 'H1') {
       nestedHeadings.push({ id, title, items: [] });
-    } else if (heading.nodeName === 'H3' && nestedHeadings.length > 0) {
+    } else if (
+      heading.nodeName === 'H2' ||
+      (heading.nodeName === 'H3' && nestedHeadings.length > 0)
+    ) {
       nestedHeadings[nestedHeadings.length - 1].items.push({
         id,
         title,
@@ -144,7 +143,6 @@ const TableOfContents = () => {
   const { nestedHeadings } = useHeadingsData();
   useIntersectionObserver(setActiveId);
 
-  console.log(activeId);
   return (
     <nav className="w-56 text-xs min-w-[220px] sticky top-12 max-h-[calc(100vh-70px)] overflow-auto p-4  bg-white border-l">
       <Headings headings={nestedHeadings} activeId={activeId} />
