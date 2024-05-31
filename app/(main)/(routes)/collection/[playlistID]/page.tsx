@@ -40,7 +40,7 @@ const Playlist = ({ params }: any) => {
     mutate,
   } = useSWR(
     isSignedIn
-      ? `https://weichunnn-production--yt-university-app.modal.run/api/playlists/${playlistID}`
+      ? `https://onyx--yt-university-app.modal.run/api/playlists/${playlistID}`
       : null,
     fetcher,
     { revalidateOnFocus: false, revalidateOnReconnect: false }
@@ -61,7 +61,7 @@ const Playlist = ({ params }: any) => {
 
   const handleDelete = async () => {
     const response = await fetch(
-      `https://weichunnn-production--yt-university-app.modal.run/api/playlists/${playlistID}`,
+      `https://onyx--yt-university-app.modal.run/api/playlists/${playlistID}`,
       {
         method: 'DELETE',
       }
@@ -114,7 +114,7 @@ const Playlist = ({ params }: any) => {
       console.log(data);
 
       const response = await fetch(
-        `https://weichunnn-production--yt-university-app.modal.run/api/playlists`,
+        `https://onyx--yt-university-app.modal.run/api/playlists`,
         {
           method: 'PUT',
           headers: {
@@ -190,7 +190,7 @@ const Playlist = ({ params }: any) => {
     <div className="md:flex">
       <div className="md:w-1/3 md:h-screen p-6 bg-gray-100 rounded-lg">
         <Image
-          src={playlists.videos[0]?.thumbnail || '/demo.jpeg'}
+          src={playlists.videos[0]?.thumbnail || '/home.png'}
           width={200}
           height={200}
           alt="Playlist Thumbnail"

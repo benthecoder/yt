@@ -145,11 +145,9 @@ export function SubmitYouTubeURL({ onClose }: { onClose: () => void }) {
     formState: { errors },
   } = form;
 
-  console.log(user?.id);
-
   const onSubmit = async (data: z.infer<typeof urlSchema>) => {
     const response = await fetch(
-      'https://weichunnn-production--yt-university-app.modal.run/api/process',
+      'https://onyx--yt-university-app.modal.run/api/process',
       {
         method: 'POST',
         headers: {
@@ -165,8 +163,15 @@ export function SubmitYouTubeURL({ onClose }: { onClose: () => void }) {
     const call_id = await response.json();
 
     if (response.ok) {
+      let videoId;
       const parsedUrl = new URL(data.url);
-      const videoId = parsedUrl.searchParams.get('v');
+      const searchParams = parsedUrl.searchParams;
+
+      if (parsedUrl.hostname === 'youtu.be') {
+        videoId = parsedUrl.pathname.slice(1); // Get video ID from youtu.be URL
+      } else if (searchParams.has('v')) {
+        videoId = searchParams.get('v'); // Get video ID from standard YouTube URL
+      }
 
       if (videoId) {
         reset();

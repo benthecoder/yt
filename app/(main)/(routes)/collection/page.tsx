@@ -53,7 +53,7 @@ function CreatePlaylistDialog({ isOpen, onClose }) {
     console.log(user?.id);
 
     const response = await fetch(
-      'https://weichunnn-production--yt-university-app.modal.run/api/playlists',
+      'https://onyx--yt-university-app.modal.run/api/playlists',
       {
         method: 'POST',
         headers: {
@@ -127,7 +127,7 @@ const PlaylistCollection = () => {
 
   const { data: playlists, error } = useSWR(
     isSignedIn
-      ? `https://weichunnn-production--yt-university-app.modal.run/api/playlists?user_id=${user?.id}`
+      ? `https://onyx--yt-university-app.modal.run/api/playlists?user_id=${user?.id}`
       : null,
     fetcher,
     { revalidateOnFocus: false, revalidateOnReconnect: false }

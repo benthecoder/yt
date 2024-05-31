@@ -21,7 +21,7 @@ import useSWR from 'swr';
 
 const addToPlaylists = async (playlistId, videoIds) => {
   const response = await fetch(
-    `https://weichunnn-production--yt-university-app.modal.run/api/playlists/${playlistId}/videos`,
+    `https://onyx--yt-university-app.modal.run/api/playlists/${playlistId}/videos`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -33,7 +33,7 @@ const addToPlaylists = async (playlistId, videoIds) => {
 
 const removeFromPlaylists = async (playlistId, videoIds) => {
   const response = await fetch(
-    `https://weichunnn-production--yt-university-app.modal.run/api/playlists/${playlistId}/videos`,
+    `https://onyx--yt-university-app.modal.run/api/playlists/${playlistId}/videos`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -62,7 +62,7 @@ const Checklist = ({ videoId, playlistId }) => {
 
   const { data: playlists, error } = useSWR(
     isSignedIn
-      ? `https://weichunnn-production--yt-university-app.modal.run/api/playlists?user_id=${userId}`
+      ? `https://onyx--yt-university-app.modal.run/api/playlists?user_id=${userId}`
       : null,
     fetcher,
     { revalidateOnFocus: false, revalidateOnReconnect: false }

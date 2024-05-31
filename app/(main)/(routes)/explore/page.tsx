@@ -25,7 +25,7 @@ const Explore = () => {
 
   const { data: videos, isLoading } = useSWR(
     isSignedIn
-      ? `https://weichunnn-production--yt-university-app.modal.run/api/videos?user_id=${user?.id}&page=1&page_size=20`
+      ? `https://onyx--yt-university-app.modal.run/api/videos?user_id=${user?.id}&page=1&page_size=20`
       : null,
     fetcher,
     { revalidateOnFocus: false, revalidateOnReconnect: false }

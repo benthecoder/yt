@@ -35,7 +35,7 @@ const VideoCard: React.FC<VideoCardProps> = ({
 
     try {
       const response = await fetch(
-        `https://weichunnn-production--yt-university-app.modal.run/api/users/${user?.id}/favorites/${id}`,
+        `https://onyx--yt-university-app.modal.run/api/users/${user?.id}/favorites/${id}`,
         {
           method: isFavorited ? 'POST' : 'DELETE',
           headers: {

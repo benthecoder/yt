@@ -6,14 +6,7 @@ export default function Logo() {
   return (
     <div>
       <Link href="/dashboard">
-        <Image
-          priority
-          src={Next}
-          alt=""
-          width={100}
-          height={10}
-          className="mr-2"
-        />
+        <p className="text-2xl font-serif">Sumrize</p>
       </Link>
     </div>
   );

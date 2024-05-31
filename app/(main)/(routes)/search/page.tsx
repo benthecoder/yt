@@ -18,7 +18,7 @@ const SearchPage = () => {
   const handleSearch = async () => {
     setLoading(true);
     const response = await fetch(
-      'https://weichunnn-production--yt-university-app.modal.run/api/search',
+      'https://onyx--yt-university-app.modal.run/api/search',
       {
         method: 'POST',
         headers: {

@@ -5,6 +5,7 @@ import VideoList from '@/components/videoList';
 import { useUser } from '@clerk/nextjs';
 import { IconMap } from '@/lib/constants';
 import * as React from 'react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 import {
   Select,
@@ -42,7 +43,7 @@ const Home = () => {
 
   const { data: allVideos, isLoading } = useSWR(
     isSignedIn
-      ? `https://weichunnn-production--yt-university-app.modal.run/api/videos?page=1&page_size=20&user_id=${user?.id}`
+      ? `https://onyx--yt-university-app.modal.run/api/videos?page=1&page_size=20&user_id=${user?.id}`
       : null,
     fetcher,
     { revalidateOnFocus: false, revalidateOnReconnect: false }
@@ -91,17 +92,19 @@ const Home = () => {
             <SelectTrigger className="w-[150px] ml-2 text-xs">
               <SelectValue placeholder="Filter by Category" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectLabel>Category</SelectLabel>
-                <SelectItem value="All">All</SelectItem>
-                {Object.keys(IconMap).map((category) => (
-                  <SelectItem key={category} value={category}>
-                    {category}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
+            <ScrollArea>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Category</SelectLabel>
+                  <SelectItem value="All">All</SelectItem>
+                  {Object.keys(IconMap).map((category) => (
+                    <SelectItem key={category} value={category}>
+                      {category}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </ScrollArea>
           </Select>
 
           <Select onValueChange={setSortOrder}>

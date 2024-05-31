@@ -8,7 +8,7 @@ const VideoByCategory = ({ params }: any) => {
 
   const { category } = params;
   const { data: videos, isLoading } = useSWR(
-    `https://weichunnn-production--yt-university-app.modal.run/api/videos?page=1&page_size=10&category=${category}`,
+    `https://onyx--yt-university-app.modal.run/api/videos?page=1&page_size=10&category=${category}`,
     fetcher,
     { revalidateOnFocus: false, revalidateOnReconnect: false }
   );
